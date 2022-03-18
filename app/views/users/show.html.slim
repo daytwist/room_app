@@ -1,0 +1,17 @@
+.container
+  h3 プロフィール
+  .mb-3
+  table.table
+    tr
+      th = User.human_attribute_name(:image)
+      td = image_tag @user.image, class: "show-img" if @user.image.attached?
+    tr
+      th = User.human_attribute_name(:name)
+      td = @user.name
+    tr
+      th = User.human_attribute_name(:introduction)
+      td = @user.introduction
+  ul
+    - if @user == current_user
+      li = link_to  "プロフィールを編集する", edit_user_path(@user),  class: "btn btn-primary mb-3"
+    li = link_to  "ホームへ戻る", root_path

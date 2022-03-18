@@ -1,0 +1,102 @@
+.top-wrapper {
+  background-image: image-url('background-img.jpeg');
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+  position: relative;
+}
+
+.top-card {
+  position: absolute;
+  top: 150px;
+  left: 10%;
+  width: 460px;
+}
+
+.card-contents {
+  padding: 2rem;
+  text-align: left;
+}
+
+.search-forms {
+  margin: 20px 0;
+}
+
+.btn-search {
+  width: 100%;
+}
+
+.recommend-contents {
+  margin: 20px;
+  text-align: left;
+}
+
+.sample-img {
+  max-width: 50%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.sample-img span {
+  position: absolute;
+  top: 350px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+  text-align: center;
+}
+
+.sample-img img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.tokyo {
+  object-position: 0% 0%;
+}
+
+.room-img {
+  max-width: 200px;
+}
+
+.show-contents {
+  margin: 0 20px;
+}
+
+.room-show-img {
+  width: 100%;
+}
+
+.room-show {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.room-user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.room-form {
+  max-width: 800px;
+  margin: 10px auto;
+}
+
+.reserve-form {
+  text-align: left;
+}
+
+.btn-reserve {
+  width: 100%;
+}

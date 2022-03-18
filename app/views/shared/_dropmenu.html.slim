@@ -1,0 +1,6 @@
+ul.dropdown-menu.dropdown-menu-dark aria-labelledby="navbarDarkDropdownMenuLink"
+  li = link_to  "ルーム登録", new_room_path, class: "dropdown-item"
+  li = link_to  "登録済みルーム", "/users/#{current_user.id}/posts", class: "dropdown-item"
+  li = link_to  "予約済みルーム", "/users/#{current_user.id}/reservations", class: "dropdown-item"
+  li = link_to  "プロフィール", user_path(current_user), class: "dropdown-item"
+  li = link_to  "アカウント情報", "/users/#{current_user.id}/account", class: "dropdown-item"

@@ -1,0 +1,36 @@
+.container
+  .card.room-form
+    .card-body
+      h3.card-title ルーム編集
+      .mb-3
+      = render "shared/error", obj: @room
+      = form_with model: @room do |f|
+        table.table
+          tr
+            th
+              = f.label :name
+              = render "shared/badge"
+            td = f.text_field :name, class: "form-control"
+          tr
+            th
+              = f.label :address
+              = render "shared/badge"
+            td = f.text_field :address, class: "form-control"
+          tr
+            th
+              = f.label :price_per_day
+              = render "shared/badge"
+            td = f.number_field :price_per_day, class: "form-control"
+          tr
+            th
+              = f.label :introduction
+              = render "shared/badge"
+            td = f.text_area :introduction, class: "form-control"
+          tr
+            th
+              = f.label :image
+              = render "shared/badge"
+            td = f.file_field :image, class: "form-control"
+        = f.hidden_field :user_id, value: current_user.id
+        = f.submit "更新する", class: "btn btn-primary mb-3"
+      = link_to "戻る", :back

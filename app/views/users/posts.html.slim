@@ -1,0 +1,23 @@
+.container
+  h3 登録済みルーム一覧
+  table.table
+    thead
+      tr
+        th = Room.human_attribute_name(:image)
+        th = Room.human_attribute_name(:name)
+        th = Room.human_attribute_name(:price_per_day)
+        th = Room.human_attribute_name(:created_at)
+        th 編集
+        th 削除
+    tbody
+      - @rooms.each do |room|
+        tr
+          td = image_tag room.image, class: "room-img"
+          td = link_to room.name, room_path(room)
+          td ¥ #{room.price_per_day}
+          td = room.created_at.to_s(:datetime_jp)
+          td = link_to  "編集", edit_room_path(room)
+          td = link_to  "削除", room, method: :delete, data: {confirm: "本当に削除しますか？"}
+  ul
+    li = link_to "ルーム新規登録", new_room_path, class: "btn btn-primary mb-3"
+    li = link_to "ホームへ戻る", root_path
