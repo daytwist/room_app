@@ -1,0 +1,19 @@
+.container
+  h3 プロフィール編集
+  .mb-3
+  = render "shared/error", obj: @user
+  = form_with model: @user do |f|
+    table.table
+      tr
+        th
+          = f.label :name, class: "form-label"
+          = render "shared/badge"
+        td = f.text_field :name, class: "form-control"
+      tr
+        th = f.label :introduction, class: "form-label"
+        td = f.text_area :introduction, class: "form-control"
+      tr
+        th = f.label :image, class: "form-label"
+        td = f.file_field :image, class: "form-control"
+    = f.submit "更新する", class: "btn btn-primary mb-3"
+  = link_to  "プロフィールへ戻る", user_path

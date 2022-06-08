@@ -1,0 +1,20 @@
+.container
+  h3 検索結果： #{@rooms.count} 件
+  .mb-3
+  table.table
+    thead
+      tr
+        th = Room.human_attribute_name(:image)
+        th = Room.human_attribute_name(:name)
+        th = Room.human_attribute_name(:address)
+        th = Room.human_attribute_name(:price_per_day)
+        th = Room.human_attribute_name(:created_at)
+    tbody
+      - @rooms.each do |room|
+        tr
+          td = image_tag room.image, class: "room-img"
+          td = link_to room.name, room_path(room)
+          td = room.address
+          td ¥ #{room.price_per_day}
+          td = room.created_at.to_s(:datetime_jp)
+  = link_to  "ホームへ戻る", root_path

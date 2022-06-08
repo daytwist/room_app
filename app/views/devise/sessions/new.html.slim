@@ -1,0 +1,16 @@
+.container
+  .card.login-form
+    .card-body
+      h3.card-title.mb-3 ログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field.mb-3
+          = f.label :email, class: "form-label"
+          span.badge.bg-danger 必須
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "name@example.com"
+        .field.mb-3
+          = f.label :password, class: "form-label"
+          span.badge.bg-danger 必須
+          = f.password_field :password, autocomplete: "current-password", class: "form-control"
+        .actions.mb-3
+          = f.submit "ログイン", class: "btn btn-primary"
+      = render "devise/shared/links"

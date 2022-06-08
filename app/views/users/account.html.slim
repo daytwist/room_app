@@ -1,0 +1,17 @@
+.container
+  h3 アカウント情報
+  .mb-3
+  table.table
+    tr
+      th = User.human_attribute_name(:name)
+      td = @user.name
+    tr
+      th メールアドレス
+      td = @user.email
+    tr
+      th パスワード
+      td
+        | ********
+  ul
+    li = link_to  "アカウント情報を編集する", edit_user_registration_path(@user), class: "btn btn-primary mb-3"
+    li = link_to  "ホームへ戻る", root_path

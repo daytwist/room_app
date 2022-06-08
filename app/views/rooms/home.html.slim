@@ -1,0 +1,32 @@
+.top-wrapper
+  .card.top-card
+    .card-contents
+      h3.card-title
+        | 宿泊ルームを探そう
+      = search_form_for(@q, url:search_path) do |f|
+        p.search-forms
+          = f.label :address_cont, "エリア", class: "form-label"
+          = f.search_field :address_cont, class: "form-control mb-3", placeholder: "東京"
+          = f.label :name_or_address_or_introduction_cont, "キーワード", class: "form-label"
+          = f.search_field :name_or_address_or_introduction_cont, class: "form-control", placeholder: "夜景"
+        = f.submit "探す", class: "btn btn-primary btn-search"
+.container
+  .recommend-contents
+    h3.mb-4 おすすめのエリア
+    .row
+      .col-6.col-lg-3.sample-img
+        span 東京
+        = link_to action: "search", q: {address_cont: '東京'} do
+          = image_tag 'tokyo.jpeg', class: "tokyo"
+      .col-6.col-lg-3.sample-img
+        span 横浜
+        = link_to action: "search", q: {address_cont: '横浜'} do
+          = image_tag 'yokohama.jpeg'
+      .col-6.col-lg-3.sample-img
+        span 大阪
+        = link_to action: "search", q: {address_cont: '大阪'} do
+          = image_tag 'osaka.jpeg'
+      .col-6.col-lg-3.sample-img
+        span 名古屋
+        = link_to action: "search", q: {address_cont: '名古屋'} do
+          = image_tag 'nagoya.jpeg'

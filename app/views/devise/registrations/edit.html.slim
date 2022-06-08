@@ -1,0 +1,50 @@
+.container
+  ul.nav.nav-tabs.mb-3#myTab role="tablist"
+    li.nav-item role="presentation"
+      button.nav-link.active#edit-tab data-bs-toggle="tab" data-bs-target="#edit" type="button" role="tab" aria-controls="edit" aria-selected="false"
+        | アカウント編集
+    li.nav-item role="presentation"
+      button.nav-link#destroy-tab data-bs-toggle="tab" data-bs-target="#destroy" type="button" role="tab" aria-controls="destroy" aria-selected="true"
+        | アカウント削除
+  .tab-content#myTabContent
+    .tab-pane.show.active.fade#edit role="tabpanel" aria-labelledby="edit-tab"
+      h3 アカウント編集
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .mb-3
+        table.table
+          tr
+            th
+              = f.label :name
+              = render "shared/badge"
+            td = f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"
+          tr
+            th
+              = f.label :email
+              = render "shared/badge"
+            td = f.email_field :email, autocomplete: "email", class: "form-control"
+          tr
+            th = f.label :password
+            td = f.password_field :password, autocomplete: "new-password", class: "form-control"
+              - if @minimum_password_length
+                br
+                em
+                  = @minimum_password_length
+                  |  文字以上
+          tr
+            th = f.label :password_confirmation
+            td = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+          tr
+            th
+              = f.label :current_password
+              = render "shared/badge"
+            td
+              = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
+        .actions
+          = f.submit "更新する", class: "btn btn-primary mb-3"
+        = link_to "戻る", :back
+    .tab-pane.fade#destroy role="tabpanel" aria-labelledby="destroy-tab"
+      h3 アカウント削除
+      p 本当に削除しますか？
+      = button_to "削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger mb-3"
+      = link_to "戻る", :back

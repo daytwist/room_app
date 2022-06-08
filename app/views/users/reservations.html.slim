@@ -1,0 +1,26 @@
+.container
+  h3 予約済みルーム一覧
+  .mb-4
+  table.table
+    thead
+      tr
+        th = Room.human_attribute_name(:name)
+        th = Reservation.human_attribute_name(:start_date)
+        th = Reservation.human_attribute_name(:end_date)
+        th = Reservation.human_attribute_name(:num_of_people)
+        th 料金合計
+        th = Reservation.human_attribute_name(:updated_at)
+        th 変更
+        th キャンセル
+    tbody
+      - @reservations.each do |reservation|
+        tr
+          td = link_to reservation.room.name, room_path(reservation.room)
+          td = reservation.start_date.to_s(:date)
+          td = reservation.end_date.to_s(:date)
+          td = reservation.num_of_people
+          td ¥ #{reservation.room.price_per_day * (reservation.end_date - reservation.start_date).to_i * reservation.num_of_people}
+          td = reservation.updated_at.to_s(:datetime_jp)
+          td = link_to "変更", edit_reservation_path(reservation)
+          td = link_to "キャンセル", reservation, method: :delete, data: {confirm: "本当にキャンセルしますか？"}
+  = link_to  "ホームへ戻る", root_path

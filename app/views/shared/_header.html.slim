@@ -1,0 +1,28 @@
+header
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    .container-fluid
+      = link_to "Pote Share", root_path, class: "navbar-brand"
+      .collapse.navbar-collapse#navbarSupportedContent
+        = search_form_for(@q, url:search_path) do |f|
+          .d-flex
+            .input-group
+              span.input-group-text
+                = icon("fa-solid", "location-dot")
+              = f.search_field :address_cont, class: "form-control me-2", placeholder: "エリア"
+            .input-group
+              span.input-group-text
+                = icon("fa-solid", "magnifying-glass")
+              = f.search_field :name_or_address_or_introduction_cont, class: "form-control me-2", placeholder: "キーワード"
+            = f.submit "探す", class: "btn btn-success"
+      ul.navbar-nav
+        - if user_signed_in?
+          - if current_user.image.attached?
+            li = link_to user_path(current_user) do
+              = image_tag current_user.image, class: "icon-img"
+          li.nav-item.dropdown.header-item
+            = link_to current_user.name, '#', class: "nav-link dropdown-toggle active", id: "navbarDarkDropdownMenuLink", 'data-bs-toggle': :dropdown, 'role': "button", 'aria-expanded': false
+            = render  "shared/dropmenu"
+          li = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-item btn btn-secondary header-item"
+        - else
+          li = link_to "ログイン", new_user_session_path, class: "nav-item btn btn-primary header-item"
+          li = link_to "ユーザー登録", new_user_registration_path, class: "nav-item btn btn-light header-item"

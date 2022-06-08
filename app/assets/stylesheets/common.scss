@@ -1,0 +1,72 @@
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+ul, li {
+  text-decoration: none;
+  list-style: none;
+}
+
+table, th, td {
+  vertical-align: middle;
+}
+
+.container {
+  position: relative;
+  padding-top: 20px;
+  min-height: 73vh;
+}
+
+.alert {
+  margin-bottom: 0;
+}
+
+.navbar-brand {
+  margin: 0 35px 0 20px;
+}
+
+.navbar-collapse {
+  justify-content: space-between;
+}
+
+.input-group {
+  max-width: 220px;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.header-item {
+  margin-right: 10px;
+}
+
+.dropdown-menu.show {
+  position: absolute;
+}
+
+.icon-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-right: 5px;
+  object-fit: cover;
+}
+
+footer {
+  position: absolute;
+  color: #fff;
+  font-size: 12px;
+  background-color: #000;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
